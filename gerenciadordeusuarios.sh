@@ -1,4 +1,5 @@
 #!bin/bash
+#GERENCIADOR DE USUARIOS
 MENU(){
 SELECIONE=$(dialog \
 	--stdout \
