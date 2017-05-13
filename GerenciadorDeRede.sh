@@ -1,40 +1,189 @@
 #!bin/bash
 MENU(){
-REDE=$( dialog				\
-	--stdout                        \
-	--title "GERENCIADOR DE REDE"   \
-	--menu "Escolha uma opção"      \
-	0 0 0				\
-	1 "Configurar Uma Rede"		\
-	2 "Desligar Rede"		\
-	3 "Ligar Rede"			\
-	4 "Reiniciar Redes"             \
-	5 "SAIR")
+REDE=$( dialog					       \
+	--stdout                        	       \
+	--title "GERENCIADOR DE REDE"   	       \
+	--menu "Escolha uma opção"      	       \
+	0 0 0					       \
+	1 "Configurar Uma Rede"		 	       \
+	2 "Configurar Duas Redes"       	       \
+	3 "Configurar Três Redes"       	       \
+	4 "Configurar Quatro Redes"     	       \
+	5 "Desligar Rede"		               \
+	6 "Ligar Rede"			               \
+	7 "Reiniciar Redes"             	       \
+	8 "Remover todos os endereços IP de uma rede"  \
+	9 "Mostrar a configuração de um IP"            \
+	10 "Mostrar todos IPS configurados"            \
+	11 "Configurar uma rede via DHCP"              \
+	12 "Pingar um IP configurado "                 \
+	13 "SAIR")
 
 case $REDE in
-1) CFRR ;;
-2) DSRE ;;
-3) LGRE ;;
-4) RERR ;;
-5) exit 0
+1) CFUR ;;
+2) CFDR ;;
+3) CFTR ;;
+4) CFQR ;;
+5) DSRE ;;
+6) LGRE ;;
+7) RERR ;;
+8) RMTP ;;
+9) MCIP ;;
+10) MTIP ;;
+11) CURD ;;
+12) PICO ;;
+13) exit 0
 
 esac
 }
 CFRR(){
-IP=$( dialog --stdout --inputbox 'Digite o número IP: ' 0 0 )
-MASCARA=$( dialog --stdout --inputbox 'Digite a Mascará de Rede: ' 0 0 )
-NETWORK=$( dialog --stdout --inputbox 'Digite a Network: ' 0 0 )
-BROADCAST=$( dialog --stdout --inputbox 'Digite o Broadcast: ' 0 0 )
+IP=$( dialog --stdout --inputbox 'Digite o número IP do eth0: ' 0 0 )
+MASCARA=$( dialog --stdout --inputbox 'Digite a Mascará de Rede do eth0: ' 0 0 )
+NETWORK=$( dialog --stdout --inputbox 'Digite a Network do eth0: ' 0 0 )
+BROADCAST=$( dialog --stdout --inputbox 'Digite o Broadcast do eth0: ' 0 0 )
 echo "   auto lo
    iface lo inet loopback
 
-   # The primary network interface
+   # Primeira Interface de Rede
    auto eth0
+   allow-hotplug eth0
    iface eth0 inet static
    address $IP
    netmask $MASCARA
    network $NETWORK
    broadcast $BROADCAST" > /etc/network/interfaces
+dialog --stdout --msgbox "Rede Configurada com Sucesso " 0 0
+MENU
+}
+CFDR(){
+IP=$( dialog --stdout --inputbox 'Digite o número IP do eth0: ' 0 0 )
+MASCARA=$( dialog --stdout --inputbox 'Digite a Mascará de Rede do eth0: ' 0 0 )
+NETWORK=$( dialog --stdout --inputbox 'Digite a Network do eth0: ' 0 0 )
+BROADCAST=$( dialog --stdout --inputbox 'Digite o Broadcast do eth0: ' 0 0 )
+IP2=$( dialog --stdout --inputbox 'Digite o número IP do eth1: ' 0 0 )
+MASCARA2=$( dialog --stdout --inputbox 'Digite a Mascará de Rede do eth1: ' 0 0 )
+NETWORK2=$( dialog --stdout --inputbox 'Digite a Network do eth1: ' 0 0 )
+BROADCAST2=$( dialog --stdout --inputbox 'Digite o Broadcast do eth1: ' 0 0 )
+echo "   auto lo
+   iface lo inet loopback
+
+   # Primeira Interface de Rede
+   auto eth0
+   allow-hotplug eth0
+   iface eth0 inet static
+   address $IP
+   netmask $MASCARA
+   network $NETWORK
+   broadcast $BROADCAST
+   # Segunda Interface de Rede
+   auto eth1
+   allow-hotplug eth1
+   iface eth1 inet static
+   address $IP2
+   netmask $MASCARA2
+   network $NETWORK2
+   broadcast $BROADCAST2" > /etc/network/interfaces
+dialog --msgbox "Redes Configuradas com Sucesso " 0 0
+MENU
+}
+CFTR(){
+IP=$( dialog --stdout --inputbox 'Digite o número IP do eth0: ' 0 0 )
+MASCARA=$( dialog --stdout --inputbox 'Digite a Mascará de Rede do eth0: ' 0 0 )
+NETWORK=$( dialog --stdout --inputbox 'Digite a Network do eth0: ' 0 0 )
+BROADCAST=$( dialog --stdout --inputbox 'Digite o Broadcast do eth0: ' 0 0 )
+IP2=$( dialog --stdout --inputbox 'Digite o número IP do eth1: ' 0 0 )
+MASCARA2=$( dialog --stdout --inputbox 'Digite a Mascará de Rede do eth1: ' 0 0 )
+NETWORK2=$( dialog --stdout --inputbox 'Digite a Network do eth1: ' 0 0 )
+BROADCAST2=$( dialog --stdout --inputbox 'Digite o Broadcast do eth1: ' 0 0 )
+IP3=$( dialog --stdout --inputbox 'Digite o número IP do eth2: ' 0 0 )
+MASCARA3=$( dialog --stdout --inputbox 'Digite a Mascará de Rede do eth2: ' 0 0 )
+NETWORK3=$( dialog --stdout --inputbox 'Digite a Network do eth2: ' 0 0 )
+BROADCAST3=$( dialog --stdout --inputbox 'Digite o Broadcast do eth2: ' 0 0 )
+echo "   auto lo
+   iface lo inet loopback
+
+   # Primeira Interface de Rede
+   auto eth0
+   allow-hotplug eth0
+   iface eth0 inet static
+   address $IP
+   netmask $MASCARA
+   network $NETWORK
+   broadcast $BROADCAST
+   # Segunda Interface de Rede
+   auto eth1
+   allow-hotplug eth1
+   iface eth1 inet static
+   address $IP2
+   netmask $MASCARA2
+   network $NETWORK2
+   broadcast $BROADCAST2
+   # Terceira Interface de Rede
+   auto eth2
+   allow-hotplug eth2
+   iface eth1 inet static
+   address $IP3
+   netmask $MASCARA3
+   network $NETWORK3
+   broadcast $BROADCAST3" > /etc/network/interfaces
+dialog --msgbox "Redes Configuradas com Sucesso " 0 0
+MENU
+}
+CFQR(){
+IP=$( dialog --stdout --inputbox 'Digite o número IP do eth0: ' 0 0 )
+MASCARA=$( dialog --stdout --inputbox 'Digite a Mascará de Rede do eth0: ' 0 0 )
+NETWORK=$( dialog --stdout --inputbox 'Digite a Network do eth0: ' 0 0 )
+BROADCAST=$( dialog --stdout --inputbox 'Digite o Broadcast do eth0: ' 0 0 )
+IP2=$( dialog --stdout --inputbox 'Digite o número IP do eth1: ' 0 0 )
+MASCARA2=$( dialog --stdout --inputbox 'Digite a Mascará de Rede do eth1: ' 0 0 )
+NETWORK2=$( dialog --stdout --inputbox 'Digite a Network do eth1: ' 0 0 )
+BROADCAST2=$( dialog --stdout --inputbox 'Digite o Broadcast do eth1: ' 0 0 )
+IP3=$( dialog --stdout --inputbox 'Digite o número IP do eth2: ' 0 0 )
+MASCARA3=$( dialog --stdout --inputbox 'Digite a Mascará de Rede do eth2: ' 0 0 )
+NETWORK3=$( dialog --stdout --inputbox 'Digite a Network do eth2: ' 0 0 )
+BROADCAST3=$( dialog --stdout --inputbox 'Digite o Broadcast do eth2: ' 0 0 )
+IP4=$( dialog --stdout --inputbox 'Digite o número IP do eth3: ' 0 0 )
+MASCARA4=$( dialog --stdout --inputbox 'Digite a Mascará de Rede do eth3: ' 0 0 )
+NETWORK4=$( dialog --stdout --inputbox 'Digite a Network do eth3: ' 0 0 )
+BROADCAST4=$( dialog --stdout --inputbox 'Digite o Broadcast do eth3: ' 0 0 )
+echo "   auto lo
+   iface lo inet loopback
+
+   # Primeira Interface de Rede
+   auto eth0
+   allow-hotplug eth0
+   iface eth0 inet static
+   address $IP
+   netmask $MASCARA
+   network $NETWORK
+   broadcast $BROADCAST
+   # Segunda Interface de Rede
+   auto eth1
+   allow-hotplug eth1
+   iface eth1 inet static
+   address $IP2
+   netmask $MASCARA2
+   network $NETWORK2
+   broadcast $BROADCAST2
+   # Terceira Interface de Rede
+   auto eth2
+   allow-hotplug eth2
+   iface eth1 inet static
+   address $IP3
+   netmask $MASCARA3
+   network $NETWORK3
+   broadcast $BROADCAST3
+   # Quarta Interface de Rede
+   auto eth2
+   allow-hotplug eth2
+   iface eth1 inet static
+   address $IP4
+   netmask $MASCARA4
+   network $NETWORK4
+   broadcast $BROADCAST4" > /etc/network/interfaces
+
+dialog --msgbox "Redes Configuradas com Sucesso " 0 0
+MENU
 }
 DSRE(){
 REDE=$( dialog --stdout --inputbox 'Qual Rede Você Deseja Desligar ? ' 0 0 )
@@ -47,12 +196,12 @@ echo '60' | dialog --stdout --gauge 'Desligando Aguarde....' 0 0 0
 sleep 2
 echo '100' | dialog --stdout --gauge 'Desligando Aguarde....' 0 0 0
 sleep 2
-
 dialog --stdout --msgbox 'Rede Desligada Com Sucesso' 0 0
+rm REDE
 MENU
 }
 LGRE(){
-REDE=$( dialog --stdout --inputbox 'Qual Rede Você Deseja Ligar ? ' 0 0 0 )
+REDE=$( dialog --stdout --inputbox 'Qual Rede Você Deseja Ligar ? ' 0 0 )
 ifup $REDE > REDE &
 echo '10' | dialog --stdout --gauge 'Ligando Aguarde....' 0 0 0
 sleep 2
@@ -63,6 +212,7 @@ sleep 2
 echo '100' | dialog --stdout --gauge 'Ligando Aguarde....' 0 0 0
 sleep 2
 dialog --stdout --msgbox 'Rede Ligada Com Sucesso ' 0 0
+rm REDE
 MENU
 }
 RERR(){
@@ -81,6 +231,40 @@ if [ $? = 0 ]; then
 else
 	dialog --msgbox "Operação Cancelada" 0 0
 fi
+MENU
+}
+RMTP(){
+REDE=$( dialog --stdout --inputbox 'Qual Rede você que remover o endereços IP ? ' 0 0 )
+ip addr flush dev $REDE > REDE
+dialog --msgbox 'Todos endereços ips Removidos com Sucesso' 0 0
+rm REDE
+MENU
+}
+MCIP(){
+MOSTRAR=$( dialog --stdout --inputbox 'Digite a Rede: ' 0 0 )
+ip addr show dev $MOSTRAR > MOSTRAR.txt
+dialog --textbox MOSTRAR.txt 0 0
+rm MOSTRAR.txt
+MENU
+}
+MTIP(){
+ip addr > IP.txt
+dialog --textbox IP.txt 0 0
+rm IP.txt
+MENU
+}
+CURD(){
+DHCP=$( dialog --stdout --inputbox 'Qual Rede você quer Configurar ? ' 0 0 )
+dhclient $DHCP > DHCP
+dialog --msgbox  'Rede Configurada com Sucesso ' 0 0
+rm DHCP
+MENU
+}
+PICO(){
+PINGAR=$( dialog --stdout --inputbox 'Qual o IP da Rede ? ' 0 0 )
+ping -c 6 $PINGAR > PING &
+dialog --tailbox PING 70 70
+rm PING
 MENU
 }
 MENU
