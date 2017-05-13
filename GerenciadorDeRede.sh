@@ -2,7 +2,7 @@
 MENU(){
 REDE=$( dialog					       \
 	--stdout                        	       \
-	--title "GERENCIADOR DE REDE"   	       \
+	--title "GERENCIADOR DE REDE"       \
 	--menu "Escolha uma opção"      	       \
 	0 0 0					       \
 	1 "Configurar Uma Rede"		 	       \
@@ -36,7 +36,7 @@ case $REDE in
 
 esac
 }
-CFRR(){
+CFUR(){
 IP=$( dialog --stdout --inputbox 'Digite o número IP do eth0: ' 0 0 )
 MASCARA=$( dialog --stdout --inputbox 'Digite a Mascará de Rede do eth0: ' 0 0 )
 NETWORK=$( dialog --stdout --inputbox 'Digite a Network do eth0: ' 0 0 )
