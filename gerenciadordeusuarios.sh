@@ -11,7 +11,9 @@ SELECIONE=$(dialog \
 	4 "Criar Um Novo Usuario e Adiciona-lo a Um Grupo"\
         5 "Remover Um Usuario"\
 	6 "Remover Um Grupo"\
-        7 "Sair"            )
+	7 "Listar Usuarios" \
+	8 "Listar Grupos" \
+        9 "Sair"            )
 case $SELECIONE in
 	1) CRUO ;;
 	2) CRUG ;;
@@ -19,7 +21,9 @@ case $SELECIONE in
 	4) CNAG ;;
 	5) RMUU ;;
 	6) RMUG ;;
-	7) clear; exit 0 ;;
+	7) LSUS ;;
+	8) LSGS ;;
+	9) clear; exit 0 ;;
 	*) echo "Opção Invalida, Digite novamente"; PRESSIONE ;;
 esac
 }
@@ -83,5 +87,14 @@ grupo=$( dialog --stdout --inputbox "Digite Nome Do Grupo" 0 0 )
 groupdel $grupo
 MENU
 }
-
+LSUS(){
+grep /home /etc/passwd | cut -d: -f1 > passwd.txt
+dialog --stdout --title "Usuários" --textbox passwd.txt 50 60
+MENU
+}
+LSGS(){
+cat /etc/group > grupo.txt
+dialog --stdout --title "Grupos" --textbox grupo.txt 50 60
+MENU
+}
 MENU
