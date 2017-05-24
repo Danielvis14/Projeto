@@ -6,17 +6,17 @@ MENU(){
 		--title "Gerenciador de Dispositivos"		\
 		--menu "Selecione uma opção"			\
 		0 0 0						\
-		1 "Listar modulos carregados"			\
-		2 "Listar modulos psmouse"			\
-		3 "inserir um módulo no kernel"			\
+		1 "Listar módulos carregados"			\
+		2 "Listar módulos psmouse"			\
+		3 "Inserir um módulo no kernel"			\
 		4 "Remover módulo do kernel"			\
-		5 "Mostrar mapa das dependencias dos modulos"	\
-		6 "Mostrar informaçãos da cpu"			\
+		5 "Mostrar mapa das dependências dos módulos"	\
+		6 "Mostrar informações da cpu"			\
 		7 "Informação da placa mãe"			\
 		8 "Informação de espaço em disco"		\
-		9 "Informação de dispositivo cpi"		\
-		10 "Informaçãos do HD"				\
-		11 "SAIR"                                       )
+		9 "Informações da Memória RAM"		        \
+		10 "SAIR"                                       )
+
 case $SELECIONE in
 1) LSMC  ;;
 2) LSMPS ;;
@@ -24,7 +24,10 @@ case $SELECIONE in
 4) RMMK  ;;
 5) MMDM  ;;
 6) MICPU ;;
-11) clear; exit ;;
+7) IFDPM ;;
+8) IFEED ;;
+9) IFMR ;;
+10) clear; exit ;;
 esac
 }
 
@@ -51,7 +54,7 @@ MENU
 INMK(){
 	INSER=$( dialog 					\
 		--stdout					\
-		--title "Inserir modulo no kernel"		\
+		--title "Inserir módulo no kernel"		\
 		--fselect / 					\
 		0 0						)
 	insmod $INSER
@@ -60,8 +63,8 @@ MENU
 RMMK(){
 	REMO=$( dialog	 					\
 		--stdout					\
-		--title "Remover modulo no kernel"		\
-		--inputbox "digite o nome do modulo" 		\
+		--title "Remover módulo no kernel"		\
+		--inputbox "Digite o nome do módulo" 		\
 		0 0						)
 	rmmod $REMO
 MENU
@@ -69,10 +72,30 @@ MENU
 MMDM(){
 	depmod --all --verbose >lis.txt
 	dialog						\
-	--title "Mapa das dependencias dos modulos"	\
+	--title "Mapa das dependências dos módulos"	\
 	--textbox lis.txt				\
 	0 0
 	rm lis.txt
 MENU
+}
+MICPU(){
+	lscpu >maquina.txt
+	dialog --title "Informações da CPU" --textbox maquina.txt 0 0
+	rm maquina.txt
+}
+IFDPM(){
+ 	lspci >placamae.txt
+	dialog --title "Informações da Placa Mãe " --textbox placamae.txt 0 0
+	rm placamae.txt
+}
+IFEED(){
+	df -h >hd.txt
+	dialog --title "Espaço do Disco" --textbox hd.txt 0 0
+	rm hd.txt
+}
+IFMR(){
+	cat /proc/meminfo > memoria.txt
+	dialog --title "Informação da Memoria Ram" --textbox memoria.txt 0 0
+	rm memoria.txt
 }
 MENU
