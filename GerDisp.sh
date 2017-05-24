@@ -2,6 +2,7 @@
 MENU(){
 	SELECIONE=$( dialog					\
 		--stdout					\
+		--backtitle "ANONYMOUS"                         \
 		--title "Gerenciador de Dispositivos"		\
 		--menu "Selecione uma opção"			\
 		0 0 0						\
@@ -13,9 +14,9 @@ MENU(){
 		6 "Mostrar informaçãos da cpu"			\
 		7 "Informação da placa mãe"			\
 		8 "Informação de espaço em disco"		\
-		9 "Informação de dispositivo cpi"		\
-		10 "Informaçãos do HD"				\
-		11 "SAIR"                                       )
+		9 "Informaçãos da Memoria Ram"		        \
+		10 "SAIR"                                       )
+
 case $SELECIONE in
 1) LSMC  ;;
 2) LSMPS ;;
@@ -23,7 +24,10 @@ case $SELECIONE in
 4) RMMK  ;;
 5) MMDM  ;;
 6) MICPU ;;
-11) clear; exit ;;
+7) IFDPM ;;
+8) IFEED ;;
+9) IFMR ;;
+10) clear; exit ;;
 esac
 }
 
@@ -73,5 +77,25 @@ MMDM(){
 	0 0
 	rm lis.txt
 MENU
+}
+MICPU(){
+	lscpu >maquina.txt
+	dialog --title "Informações da CPU" --textbox maquina.txt 0 0
+	rm maquina.txt
+}
+IFDPM(){
+ 	lspci >placamae.txt
+	dialog --title "Informações da Placa Mãe " --textbox placamae.txt 0 0
+	rm placamae.txt
+}
+IFEED(){
+	df -h >hd.txt
+	dialog --title "Espaço do Disco" --textbox hd.txt 0 0
+	rm hd.txt
+}
+IFMR(){
+	cat /proc/meminfo > memoria.txt
+	dialog --title "Informação da Memoria Ram" --textbox memoria.txt 0 0
+	rm memoria.txt
 }
 MENU
