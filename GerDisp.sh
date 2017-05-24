@@ -2,6 +2,7 @@
 MENU(){
 	SELECIONE=$( dialog					\
 		--stdout					\
+		--backtitle "ANONYMOUS"                         \
 		--title "Gerenciador de Dispositivos"		\
 		--menu "Selecione uma opção"			\
 		0 0 0						\
