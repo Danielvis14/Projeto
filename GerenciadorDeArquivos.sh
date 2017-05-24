@@ -4,6 +4,7 @@
 MENU(){
 	SELECIONE=$( dialog				\
 		--stdout				\
+		--backtitle "ANONYMOUS"                 \
 		--title "Gerenciador de arquivos"	\
 		--menu "Escolha uma opção: "		\
 		0 0 0 					\
@@ -12,9 +13,13 @@ MENU(){
 		3 "Mover arquivo" 			\
 		4 "Copiar arquivo"			\
 		5 "Listar arquivos"			\
-		6 "Remover arquivo"			\
-		7 "Remover diretorio"			\
-		8 "Sair")
+		6 "Compactar arquivos"			\
+		7 "Descompactar arquivos"		\
+		8 "Permissão de arquivos"		\
+		9 "Definir dono de Arquivo"		\
+		10 "Remover arquivo"			\
+		11 "Remover diretorio"			\
+		12 "Sair")
 
 case $SELECIONE in
 	1) CRA ;;
@@ -22,9 +27,13 @@ case $SELECIONE in
 	3) MVA ;;
 	4) COP ;;
 	5) LSA ;;
-	6) RMA ;;
-	7) RMD ;;
-	8) clear; exit ;;
+	6) COM ;;
+	7) DES ;;
+	8) PDA ;;
+	9) DDA ;;
+	10) RMA ;;
+	11) RMD ;;
+	12) clear; exit ;;
 	*) dialog --msgbox "opção invalida" ;;
 
 esac
@@ -100,6 +109,87 @@ LSA(){
 MENU
 }
 
+COM(){
+	CAMI=$( dialog			    	\
+	--stdout			    	\
+	--title "Indique o caminho do arquivo"	\
+	--fselect /			    	\
+	0 0				    	)
+
+	ARQUIVOS=$( dialog				\
+	--stdout					\
+	--inputbox "Digite o nome dos arquivos"		\
+	0 0)
+
+	NAME=$( dialog					\
+	--stdout 					\
+	--inputbox "Digite o nome do novo arquivo"	\
+	0 0)
+
+	tar -cf $NAME.tar $ARQUIVOS
+MENU
+}
+
+DES(){
+
+	DIRET=$( dialog			    	\
+	--stdout			    	\
+	--title "Indique o caminho do arquivo"	\
+	--fselect /			    	\
+	0 0				    	)
+
+	NAME=$( dialog					\
+	--stdout 					\
+	--inputbox "Digite o nome do arquivo"		\
+	0 0)
+
+	CAMI=$( dialog			    		\
+	--stdout			    		\
+	--title "Indique o diretorio onde quer extrair"	\
+	--fselect /			    		\
+	0 0				    		)
+	chmod +x $NAME
+	tar -xf $NAME -C $DESCOMP
+
+}
+
+PDA(){
+	DIR=$( dialog					\
+	--stdout					\
+	--title "Indique o diretorio do seu arquivo"	\
+	--fselect / 					\
+	0 0						)
+
+	ARQ=$( dialog 				\
+	--stdout				\
+	--inputbox "Nome do arquivo"		\
+	0 0					)
+
+	PER=$( dialog 				\
+	--stdout				\
+	--inputbox "Defina a permissão desejada"\
+	0 0					)
+	chmod $PER $ARQ
+MENU
+}
+DDA(){
+	DIRET=$( dialog			\
+	--stdout			\
+	--title "Indique o diretorio"	\
+	--fselect / 			\
+	0 0				)
+
+	ARQN=$( dialog				\
+	--stdout				\
+	--inputbox "Digite o nome do arquivo"	\
+	0 0					)
+
+	DONO=$( dialog					\
+	--stdout 					\
+	--inputbox "Informe o novo dono do arquivo"	\
+	0 0						)
+	chown $ARQN $DONO
+}
 RMA(){
 	REMO=$( dialog					\
 	--stdout					\
