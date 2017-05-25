@@ -97,7 +97,7 @@ MENU
 LSA(){
 	LIST=$( dialog					\
 	--stdout					\
-	--title "Qual diretório deseja listar:"		\
+	--title "Qual diretório deseja listar?"		\
 	--fselect /					\
 	0 0						)
 	ls -l >.TEMP.txt
