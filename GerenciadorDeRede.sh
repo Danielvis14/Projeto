@@ -38,7 +38,7 @@ esac
 }
 CFUR(){
 IP=$( dialog --stdout --inputbox 'Digite o número IP do eth0: ' 0 0 )
-MASCARA=$( dialog --stdout --inputbox 'Digite a Mascará de Rede do eth0: ' 0 0 )
+MASCARA=$( dialog --stdout --inputbox 'Digite a Máscara de Rede do eth0: ' 0 0 )
 NETWORK=$( dialog --stdout --inputbox 'Digite a Network do eth0: ' 0 0 )
 BROADCAST=$( dialog --stdout --inputbox 'Digite o Broadcast do eth0: ' 0 0 )
 echo "   auto lo
@@ -52,7 +52,7 @@ echo "   auto lo
    netmask $MASCARA
    network $NETWORK
    broadcast $BROADCAST" > /etc/network/interfaces
-dialog --stdout --msgbox "Rede configurada com Sucesso " 0 0
+dialog --stdout --msgbox "Rede configurada com sucesso " 0 0
 MENU
 }
 CFDR(){
@@ -236,7 +236,7 @@ MENU
 RMTP(){
 REDE=$( dialog --stdout --inputbox 'Qual rede você deseja remover os endereços IP ? ' 0 0 )
 ip addr flush dev $REDE > REDE
-dialog --msgbox 'Todos endereços IPs removidos com sucesso' 0 0
+dialog --msgbox 'Todos endereços IPs foram removidos com sucesso' 0 0
 rm REDE
 MENU
 }
