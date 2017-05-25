@@ -16,7 +16,7 @@ MENU(){
 		6 "Compactar arquivos"			\
 		7 "Descompactar arquivos"		\
 		8 "Permissão de arquivos"		\
-		9 "Definir dono de arquivo"		\
+		9 "Definir dono do arquivo"		\
 		10 "Remover arquivo"			\
 		11 "Remover diretório"			\
 		12 "Sair")
