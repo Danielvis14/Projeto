@@ -9,16 +9,16 @@ MENU(){
 		--menu "Escolha uma opção: "		\
 		0 0 0 					\
 		1 "Criar um arquivo" 			\
-		2 "Criar um diretorio" 			\
+		2 "Criar um diretório" 			\
 		3 "Mover arquivo" 			\
 		4 "Copiar arquivo"			\
 		5 "Listar arquivos"			\
 		6 "Compactar arquivos"			\
 		7 "Descompactar arquivos"		\
 		8 "Permissão de arquivos"		\
-		9 "Definir dono de Arquivo"		\
+		9 "Definir dono de arquivo"		\
 		10 "Remover arquivo"			\
-		11 "Remover diretorio"			\
+		11 "Remover diretório"			\
 		12 "Sair")
 
 case $SELECIONE in
@@ -34,7 +34,7 @@ case $SELECIONE in
 	10) RMA ;;
 	11) RMD ;;
 	12) clear; exit ;;
-	*) dialog --msgbox "opção invalida" ;;
+	*) dialog --msgbox "Opção inválida" ;;
 
 esac
 }
@@ -51,7 +51,7 @@ MENU
 CRD(){
  DIR=$( dialog						\
 	--stdout					\
-	--inputbox "Digite um nome para o diretorio"	\
+	--inputbox "Digite um nome para o diretório"	\
 	0 0)
 	mkdir $DIR
 MENU
@@ -67,7 +67,7 @@ MVA(){
 
 	ONDE=$( dialog			            \
 	--stdout			            \
-	--title "Para onde voce deseja mover ?"	    \
+	--title "Para onde você deseja mover ?"	    \
 	--fselect /			            \
 	0 0				            )
 
@@ -85,7 +85,7 @@ COP(){
 
 	ONDE=$( dialog			\
 	--stdout			\
-	--title "Para onde copiar"	\
+	--title "Para onde copiar?"	\
 	--fselect /			\
 	0 0				)
 
@@ -97,7 +97,7 @@ MENU
 LSA(){
 	LIST=$( dialog					\
 	--stdout					\
-	--title "Qual diretorio deseja listar:"		\
+	--title "Qual diretório deseja listar:"		\
 	--fselect /					\
 	0 0						)
 	ls -l >.TEMP.txt
@@ -145,7 +145,7 @@ DES(){
 
 	CAMI=$( dialog			    		\
 	--stdout			    		\
-	--title "Indique o diretorio onde quer extrair"	\
+	--title "Indique o diretório onde quer extrair"	\
 	--fselect /			    		\
 	0 0				    		)
 	chmod +x $NAME
@@ -156,7 +156,7 @@ DES(){
 PDA(){
 	DIR=$( dialog					\
 	--stdout					\
-	--title "Indique o diretorio do seu arquivo"	\
+	--title "Indique o diretório do seu arquivo"	\
 	--fselect / 					\
 	0 0						)
 
@@ -175,7 +175,7 @@ MENU
 DDA(){
 	DIRET=$( dialog			\
 	--stdout			\
-	--title "Indique o diretorio"	\
+	--title "Indique o diretório"	\
 	--fselect / 			\
 	0 0				)
 
@@ -193,7 +193,7 @@ DDA(){
 RMA(){
 	REMO=$( dialog					\
 	--stdout					\
-	--title "Selecione o arquivo para remove-lo"	\
+	--title "Selecione o arquivo para removê-lo"	\
 	--fselect /					\
 	0 0						)
 	dialog					\
@@ -212,7 +212,7 @@ MENU
 RMD(){
 	REMO=$( dialog					\
 	--stdout					\
-	--title "Selecione o diretorio para remove-lo"	\
+	--title "Selecione o diretório para removê-lo"	\
 	--fselect /					\
 	0 0						)
 	dialog --stdout --title "Confirme" --yesno "Quer mesmo remover $REMO?" 0 0
