@@ -6,15 +6,15 @@ MENU(){
 		--title "Gerenciador de Dispositivos"		\
 		--menu "Selecione uma opção"			\
 		0 0 0						\
-		1 "Listar modulos carregados"			\
-		2 "Listar modulos psmouse"			\
-		3 "inserir um módulo no kernel"			\
+		1 "Listar módulos carregados"			\
+		2 "Listar módulos psmouse"			\
+		3 "Inserir um módulo no kernel"			\
 		4 "Remover módulo do kernel"			\
-		5 "Mostrar mapa das dependencias dos modulos"	\
-		6 "Mostrar informaçãos da cpu"			\
+		5 "Mostrar mapa das dependências dos módulos"	\
+		6 "Mostrar informações da cpu"			\
 		7 "Informação da placa mãe"			\
 		8 "Informação de espaço em disco"		\
-		9 "Informaçãos da Memoria Ram"		        \
+		9 "Informações da Memória RAM"		        \
 		10 "SAIR"                                       )
 
 case $SELECIONE in
@@ -54,7 +54,7 @@ MENU
 INMK(){
 	INSER=$( dialog 					\
 		--stdout					\
-		--title "Inserir modulo no kernel"		\
+		--title "Inserir módulo no kernel"		\
 		--fselect / 					\
 		0 0						)
 	insmod $INSER
@@ -63,8 +63,8 @@ MENU
 RMMK(){
 	REMO=$( dialog	 					\
 		--stdout					\
-		--title "Remover modulo no kernel"		\
-		--inputbox "digite o nome do modulo" 		\
+		--title "Remover módulo no kernel"		\
+		--inputbox "Digite o nome do módulo" 		\
 		0 0						)
 	rmmod $REMO
 MENU
@@ -72,7 +72,7 @@ MENU
 MMDM(){
 	depmod --all --verbose >lis.txt
 	dialog						\
-	--title "Mapa das dependencias dos modulos"	\
+	--title "Mapa das dependências dos módulos"	\
 	--textbox lis.txt				\
 	0 0
 	rm lis.txt
