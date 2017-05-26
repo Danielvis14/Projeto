@@ -46,6 +46,7 @@ case $SELECIONE in
 esac
 }
 
+#Função responsável pela criação de Arquivos
 CRA(){
  ARQ=$( dialog						\
 	--stdout					\
@@ -55,6 +56,7 @@ CRA(){
 MENU
 }
 
+#Função responsável pela criação de Diretórios
 CRD(){
  DIR=$( dialog						\
 	--stdout					\
@@ -64,7 +66,7 @@ CRD(){
 MENU
 }
 
-
+#Função incumbida de mover os  Arquivos
 MVA(){
 	MOVER=$( dialog			    \
 	--stdout			    \
