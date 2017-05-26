@@ -63,7 +63,7 @@ LSMPS(){
 MENU
 }
 
-# Função responsável pela inserção de módulos no kernel.  
+# Função responsável pela inserção de módulo no kernel.  
 INMK(){
 	INSER=$( dialog 					\
 		--stdout					\
@@ -73,6 +73,8 @@ INMK(){
 	insmod $INSER
 MENU
 }
+
+# Função responsável pela remoção de módulo no kernel.
 RMMK(){
 	REMO=$( dialog	 					\
 		--stdout					\
@@ -82,6 +84,8 @@ RMMK(){
 	rmmod $REMO
 MENU
 }
+
+# Função responsável por mostrar mapa de dependências de módulos.
 MMDM(){
 	depmod --all --verbose >lis.txt
 	dialog						\
@@ -91,21 +95,29 @@ MMDM(){
 	rm lis.txt
 MENU
 }
+
+# Função responsável por mostrar informações da cpu em utilização.
 MICPU(){
 	lscpu >maquina.txt
 	dialog --title "Informações da CPU" --textbox maquina.txt 0 0
 	rm maquina.txt
 }
+
+# Função responsável por mostrar informações da placa mãe (motherboard) .
 IFDPM(){
  	lspci >placamae.txt
 	dialog --title "Informações da Placa Mãe " --textbox placamae.txt 0 0
 	rm placamae.txt
 }
+
+# Função responsável por mostrar informações do espaço em disco utilizado.
 IFEED(){
 	df -h >hd.txt
 	dialog --title "Espaço do Disco" --textbox hd.txt 0 0
 	rm hd.txt
 }
+
+# Função responsável por mostrar informações da memória RAM.
 IFMR(){
 	cat /proc/meminfo > memoria.txt
 	dialog --title "Informação da Memoria Ram" --textbox memoria.txt 0 0
