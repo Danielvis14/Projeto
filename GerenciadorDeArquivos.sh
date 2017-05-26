@@ -1,6 +1,12 @@
 #!/bin/bash
+
+###########################################################
 # Projeto Anonymous
-# Este programa é um gerenciador de arquivos
+# Módulo responsável pelo gerenciamento de Arquivos 
+# Criadores: Alana; Daniel; Fernando; Francisco; Luiz Henrique; Vanderlei.
+
+###########################################################
+
 MENU(){
 	SELECIONE=$( dialog				\
 		--stdout				\
