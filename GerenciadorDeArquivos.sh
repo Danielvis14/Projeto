@@ -105,6 +105,8 @@ MENU
 }
 
 #Função responsável por listar os Arquivos
+
+# Talvez haja um bug nesse modulo
 LSA(){
 	LIST=$( dialog					\
 	--stdout					\
