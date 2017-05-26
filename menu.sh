@@ -2,6 +2,7 @@
 MENU(){
 MENU=$( dialog                 		\
 	--stdout               		\
+	--nocancel                      \
 	--backtitle "ANONYMOUS"         \
 	--title "Gerenciadores"		\
 	--menu ""              		\

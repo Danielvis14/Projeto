@@ -1,9 +1,10 @@
-#!bin/bash
+#!/bin/bash
 #GERENCIADOR DE USUARIOS
 MENU(){
 SELECIONE=$(dialog \
 	--stdout \
-	--menu "Gerenciador de usuário"\
+	--nocancel\
+	--menu "Gerenciador de Usuários"\
 	0 0 0 \
 	1 "Criar usuário"\
 	2 "Criar um grupo"\
@@ -13,7 +14,7 @@ SELECIONE=$(dialog \
 	6 "Remover um grupo"\
 	7 "Listar usuários" \
 	8 "Listar grupos" \
-        9 "Sair"            )
+        9 "Voltar"            )
 case $SELECIONE in
 	1) CRUO ;;
 	2) CRUG ;;
@@ -23,8 +24,7 @@ case $SELECIONE in
 	6) RMUG ;;
 	7) LSUS ;;
 	8) LSGS ;;
-	9) clear; exit 0 ;;
-	*) echo "Opção Inválida, digite novamente"; PRESSIONE ;;
+	9) ./menu.sh
 esac
 }
 

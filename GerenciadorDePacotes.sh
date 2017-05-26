@@ -1,8 +1,9 @@
-#!bin/bash
+#!/bin/bash
 MENU(){
 Repositorio=$(dialog                       	     	\
  	--stdout                      	 	   	\
-	--title "GERENCIADOR DE REPOSITÓRIOS"           \
+	--nocancel                                      \
+	--title "Gerenciador de Pacotes"                \
  	--menu  "Escolha uma opção"  	  	   	\
 	0 0 0                        	 	   	\
 	1 "Atualizar os repositórios"              	\
@@ -16,7 +17,7 @@ Repositorio=$(dialog                       	     	\
 	9 "Remover um pacote"        	 	   	\
 	10 "Remover um pacote e suas configurações" 	\
 	11 "Listar pacotes instalados"              	\
-	12 "SAIR")
+	12 "Voltar")
 
 case $Repositorio in
 1) ATOR  ;;
@@ -30,8 +31,7 @@ case $Repositorio in
 9) RMUP  ;;
 10) RMPC ;;
 11) LPIS ;;
-12) clear;exit 0 ;;
-*) echo "Opção invalida. Digite novamente"; PRESSIONE ;;
+12) ./menu.sh
 esac
 }
 

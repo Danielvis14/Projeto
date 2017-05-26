@@ -24,7 +24,7 @@ MENU(){
 		7 "Informação da placa mãe"			\
 		8 "Informação de espaço em disco"		\
 		9 "Informações da Memória RAM"		        \
-		10 "SAIR"                                       )
+		10 "Voltar"                                       )
 
 case $SELECIONE in
 1) LSMC  ;;
@@ -36,7 +36,7 @@ case $SELECIONE in
 7) IFDPM ;;
 8) IFEED ;;
 9) IFMR ;;
-10) clear; exit ;;
+10) ./menu.sh
 esac
 }
 

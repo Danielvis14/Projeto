@@ -2,17 +2,18 @@
 
 ###########################################################
 # Projeto Anonymous
-# Módulo responsável pelo gerenciamento de Arquivos 
+# Módulo responsável pelo gerenciamento de Arquivos
 # Criadores: Alana; Daniel; Fernando; Francisco; Luiz Henrique; Vanderlei.
 
 ###########################################################
 
-# Função Menu responsável pelas rotinas principais deste Módulo.  
+# Função Menu responsável pelas rotinas principais deste Módulo.
 MENU(){
 	SELECIONE=$( dialog				\
 		--stdout				\
+		--nocancel                              \
 		--backtitle "ANONYMOUS"                 \
-		--title "Gerenciador de arquivos"	\
+		--title "Gerenciador de Arquivos"	\
 		--menu "Escolha uma opção: "		\
 		0 0 0 					\
 		1 "Criar um arquivo" 			\
@@ -26,7 +27,7 @@ MENU(){
 		9 "Definir dono do arquivo"		\
 		10 "Remover arquivo"			\
 		11 "Remover diretório"			\
-		12 "Sair")
+		12 "Voltar")
 
 case $SELECIONE in
 	1) CRA ;;
@@ -40,8 +41,7 @@ case $SELECIONE in
 	9) DDA ;;
 	10) RMA ;;
 	11) RMD ;;
-	12) clear; exit ;;
-	*) dialog --msgbox "Opção inválida" ;;
+	12) ./menu.sh;clear
 
 esac
 }
@@ -53,6 +53,10 @@ CRA(){
 	--inputbox "Digite um nome para o arquivo"	\
 	0 0						)
 	>$ARQ
+
+if [ $ARQ = 1 ]; then
+	MENU
+fi
 MENU
 }
 
@@ -63,6 +67,10 @@ CRD(){
 	--inputbox "Digite um nome para o diretório"	\
 	0 0)
 	mkdir $DIR
+if [ $? = 1 ]; then
+	MENU
+fi
+
 MENU
 }
 
@@ -73,6 +81,10 @@ MVA(){
 	--title "O que você deseja mover ? "\
 	--fselect /			    \
 	0 0				    )
+	if [ $? = 1 ]; then
+	MENU
+	fi
+
 
 	ONDE=$( dialog			            \
 	--stdout			            \
@@ -81,7 +93,9 @@ MVA(){
 	0 0				            )
 
 
-mv $MOVER $ONDE
+	mv $MOVER $ONDE
+
+
 MENU
 }
 
@@ -101,6 +115,7 @@ COP(){
 
 
 cp $COPIAR $ONDE
+
 MENU
 }
 
@@ -119,6 +134,8 @@ LSA(){
 	--textbox .TEMP.txt			\
 	0 0
 	rm .TEMP.txt
+
+
 MENU
 }
 
@@ -141,6 +158,7 @@ COM(){
 	0 0)
 
 	tar -cf $NAME.tar $ARQUIVOS
+
 MENU
 }
 
@@ -165,6 +183,7 @@ DES(){
 	0 0				    		)
 	chmod +x $NAME
 	tar -xf $NAME -C $DESCOMP
+MENU
 
 }
 
@@ -175,7 +194,7 @@ PDA(){
 	--title "Indique o diretório do seu arquivo"	\
 	--fselect / 					\
 	0 0						)
-
+	cd $DIR
 	ARQ=$( dialog 				\
 	--stdout				\
 	--inputbox "Nome do arquivo"		\
@@ -186,6 +205,8 @@ PDA(){
 	--inputbox "Defina a permissão desejada"\
 	0 0					)
 	chmod $PER $ARQ
+
+
 MENU
 }
 
@@ -196,7 +217,7 @@ DDA(){
 	--title "Indique o diretório"	\
 	--fselect / 			\
 	0 0				)
-
+	cd $DIRET
 	ARQN=$( dialog				\
 	--stdout				\
 	--inputbox "Digite o nome do arquivo"	\
@@ -206,7 +227,9 @@ DDA(){
 	--stdout 					\
 	--inputbox "Informe o novo dono do arquivo"	\
 	0 0						)
-	chown $ARQN $DONO
+	chown $DONO $ARQN
+
+MENU
 }
 
 #Função responsável pela remoção dos Arquivo
@@ -226,6 +249,7 @@ RMA(){
 	else
 		MENU
 	fi
+
 MENU
 }
 
@@ -242,6 +266,7 @@ RMD(){
 	else
 		MENU
 	fi
+
 MENU
 }
 

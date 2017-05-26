@@ -2,7 +2,8 @@
 MENU(){
 REDE=$( dialog					       \
 	--stdout                        	       \
-	--title "GERENCIADOR DE REDE"       \
+	--nocancel                                     \
+	--title "Gerenciador de Rede"       	       \
 	--menu "Escolha uma opção"      	       \
 	0 0 0					       \
 	1 "Configurar uma rede"		 	       \
@@ -17,7 +18,7 @@ REDE=$( dialog					       \
 	10 "Mostrar todos IPs configurados"            \
 	11 "Configurar uma rede via DHCP"              \
 	12 "Pingar um IP configurado"                 \
-	13 "SAIR")
+	13 "Voltar")
 
 case $REDE in
 1) CFUR ;;
@@ -32,7 +33,7 @@ case $REDE in
 10) MTIP ;;
 11) CURD ;;
 12) PICO ;;
-13) exit 0
+13) ./menu.sh
 
 esac
 }
