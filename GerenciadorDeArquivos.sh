@@ -85,6 +85,7 @@ mv $MOVER $ONDE
 MENU
 }
 
+#Função responsável pela cópia de Arquivos
 COP(){
 	COPIAR=$( dialog			\
 	--stdout			        \
@@ -103,6 +104,7 @@ cp $COPIAR $ONDE
 MENU
 }
 
+#Função responsável por listar os Arquivos
 LSA(){
 	LIST=$( dialog					\
 	--stdout					\
@@ -118,6 +120,7 @@ LSA(){
 MENU
 }
 
+#Função responsável pela compactação dos Arquivos
 COM(){
 	CAMI=$( dialog			    	\
 	--stdout			    	\
@@ -139,6 +142,7 @@ COM(){
 MENU
 }
 
+#Função responsável pela descompactação dos Arquivos
 DES(){
 
 	DIRET=$( dialog			    	\
@@ -162,6 +166,7 @@ DES(){
 
 }
 
+#Função responsável pela permissão de Arquivos
 PDA(){
 	DIR=$( dialog					\
 	--stdout					\
@@ -181,6 +186,8 @@ PDA(){
 	chmod $PER $ARQ
 MENU
 }
+
+#Função responsável pela definição do dono do Arquivo
 DDA(){
 	DIRET=$( dialog			\
 	--stdout			\
@@ -199,6 +206,8 @@ DDA(){
 	0 0						)
 	chown $ARQN $DONO
 }
+
+#Função responsável pela remoção dos Arquivo
 RMA(){
 	REMO=$( dialog					\
 	--stdout					\
@@ -218,6 +227,7 @@ RMA(){
 MENU
 }
 
+#Função responsável pela remoção do Diretório
 RMD(){
 	REMO=$( dialog					\
 	--stdout					\
