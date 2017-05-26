@@ -1,4 +1,13 @@
 #!/bin/bash
+
+###########################################################
+# Projeto Anonymous
+# Módulo responsável pelo gerenciamento de Arquivos 
+# Criadores: Alana; Daniel; Fernando; Francisco; Luiz Henrique; Vanderlei.
+
+###########################################################
+
+# Função Menu responsável pelas rotinas principais deste Módulo.  
 MENU(){
 	SELECIONE=$( dialog					\
 		--stdout					\
@@ -31,6 +40,7 @@ case $SELECIONE in
 esac
 }
 
+# Função responsável pela listagem dos módulos carregados no sistema.  
 LSMC(){
 	lsmod > listagem.txt &
 	dialog 					\
@@ -41,6 +51,7 @@ LSMC(){
 MENU
 }
 
+# Função responsável por listar módulos psmouse.  
 LSMPS(){
 	modinfo psmouse > lista.txt &
 	dialog 					\
@@ -51,6 +62,8 @@ LSMPS(){
 
 MENU
 }
+
+# Função responsável pela inserção de módulos no kernel.  
 INMK(){
 	INSER=$( dialog 					\
 		--stdout					\
