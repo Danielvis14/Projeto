@@ -7,6 +7,7 @@
 
 ###########################################################
 
+# Função Menu responsável pelas rotinas principais deste Módulo.  
 MENU(){
 	SELECIONE=$( dialog				\
 		--stdout				\
