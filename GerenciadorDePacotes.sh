@@ -1,4 +1,13 @@
 #!/bin/bash
+
+###########################################################
+# Projeto Anonymous
+# Módulo responsável pelo gerenciamento de Arquivos
+# Criadores: Alana; Daniel; Fernando; Francisco; Luiz Henrique; Vanderlei.
+
+###########################################################
+
+# Função Menu responsável pelas rotinas principais deste Módulo.
 MENU(){
 Repositorio=$(dialog                       	     	\
  	--stdout                      	 	   	\
@@ -39,6 +48,7 @@ PRESSIONE(){
  dialog --msgbox "Pressione [enter] para finalizar" 0 0
 }
 
+#Função responsável pela atualização dos repositórios.
 ATOR(){
 dialog --stdout --yesno "Quer atualizar os repositórios ?" 0 0
 
@@ -61,6 +71,8 @@ fi
 
 MENU
 }
+
+#Função responsável pela atualização dos pacotes.
 ATP(){
 dialog --stdout --yesno "Quer atualizar os pacotes ?" 0 0
 if [ $? = 0 ]; then
@@ -84,6 +96,8 @@ else
 fi
 MENU
 }
+
+#Função responsável pela remoção das dependências de pacotes.
 RMDP(){
 pacote=$( dialog --stdout --inputbox "Qual O Nome Do Pacote ?" 0 0 )
 dialog --yesno "Você quer mesmo remover ?" 0 0
@@ -108,6 +122,7 @@ else
 fi
 MENU
 }
+
 ATPD(){
 dialog --stdout --yesno "Quer atualizar os pacotes e remover dependências antigas ?" 0 0
 if [ $? = 0 ]; then
