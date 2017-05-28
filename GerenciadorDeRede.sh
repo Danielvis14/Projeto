@@ -1,4 +1,13 @@
 #!/bin/bash
+
+###########################################################
+# Projeto Anonymous
+# Módulo responsável pelo gerenciamento de Arquivos 
+# Criadores: Alana; Daniel; Fernando; Francisco; Luiz Henrique; Vanderlei.
+
+###########################################################
+
+# Função Menu responsável pelas rotinas principais deste Módulo.
 MENU(){
 REDE=$( dialog					       \
 	--stdout                        	       \
@@ -37,6 +46,8 @@ case $REDE in
 
 esac
 }
+
+# Função responsável pela configuração de uma rede.
 CFUR(){
 IP=$( dialog --stdout --inputbox 'Digite o número IP do eth0: ' 0 0 )
 MASCARA=$( dialog --stdout --inputbox 'Digite a Máscara de Rede do eth0: ' 0 0 )
@@ -56,6 +67,8 @@ echo "   auto lo
 dialog --stdout --msgbox "Rede configurada com sucesso " 0 0
 MENU
 }
+
+# Função responsável pela configuração de duas rede.
 CFDR(){
 IP=$( dialog --stdout --inputbox 'Digite o número IP do eth0: ' 0 0 )
 MASCARA=$( dialog --stdout --inputbox 'Digite a Máscara de rede do eth0: ' 0 0 )
@@ -87,6 +100,8 @@ echo "   auto lo
 dialog --msgbox "Redes configuradas com sucesso " 0 0
 MENU
 }
+
+# Função responsável pela configuração de três rede.
 CFTR(){
 IP=$( dialog --stdout --inputbox 'Digite o número IP do eth0: ' 0 0 )
 MASCARA=$( dialog --stdout --inputbox 'Digite a Máscara de rede do eth0: ' 0 0 )
@@ -130,6 +145,8 @@ echo "   auto lo
 dialog --msgbox "Redes configuradas com sucesso " 0 0
 MENU
 }
+
+# Função responsável pela configuração de quatro rede.
 CFQR(){
 IP=$( dialog --stdout --inputbox 'Digite o número IP do eth0: ' 0 0 )
 MASCARA=$( dialog --stdout --inputbox 'Digite a Máscara de rede do eth0: ' 0 0 )
@@ -186,6 +203,8 @@ echo "   auto lo
 dialog --msgbox "Redes configuradas com sucesso " 0 0
 MENU
 }
+
+# Função responsável por desligar a rede.
 DSRE(){
 REDE=$( dialog --stdout --inputbox 'Qual rede você deseja desligar ? ' 0 0 )
 ifdown $REDE > REDE &
@@ -201,6 +220,8 @@ dialog --stdout --msgbox 'Rede desligada com sucesso' 0 0
 rm REDE
 MENU
 }
+
+# Função responsável por ligar a rede.
 LGRE(){
 REDE=$( dialog --stdout --inputbox 'Qual rede você deseja ligar ? ' 0 0 )
 ifup $REDE > REDE &
@@ -216,6 +237,8 @@ dialog --stdout --msgbox 'Rede ligada com sucesso ' 0 0
 rm REDE
 MENU
 }
+
+# Função responsável por reiniciar a rede.
 RERR(){
 REINICIAR=$( dialog --stdout --yesno 'Você deseja reiniciar as redes ? ' 0 0 )
 if [ $? = 0 ]; then
@@ -234,6 +257,8 @@ else
 fi
 MENU
 }
+
+# Função responsável por remover todos os endereços IPs de uma rede.
 RMTP(){
 REDE=$( dialog --stdout --inputbox 'Qual rede você deseja remover os endereços IP ? ' 0 0 )
 ip addr flush dev $REDE > REDE
@@ -241,6 +266,8 @@ dialog --msgbox 'Todos endereços IPs foram removidos com sucesso' 0 0
 rm REDE
 MENU
 }
+
+# Função responsável por mostrar a configuração de um ip.
 MCIP(){
 MOSTRAR=$( dialog --stdout --inputbox 'Digite a rede: ' 0 0 )
 ip addr show dev $MOSTRAR > MOSTRAR.txt
@@ -248,12 +275,16 @@ dialog --textbox MOSTRAR.txt 0 0
 rm MOSTRAR.txt
 MENU
 }
+
+# Função responsável por mostrar todos os ip configurados.
 MTIP(){
 ip addr > IP.txt
 dialog --textbox IP.txt 0 0
 rm IP.txt
 MENU
 }
+
+# Função responsável por configuração de uma rede por DHCP.
 CURD(){
 DHCP=$( dialog --stdout --inputbox 'Qual rede você deseja configurar ? ' 0 0 )
 dhclient $DHCP > DHCP
@@ -261,6 +292,8 @@ dialog --msgbox  'Rede configurada com sucesso ' 0 0
 rm DHCP
 MENU
 }
+
+# Função responsável por pingar um ip configurado.
 PICO(){
 PINGAR=$( dialog --stdout --inputbox 'Qual o IP da rede ? ' 0 0 )
 ping -c 6 $PINGAR > PING &
