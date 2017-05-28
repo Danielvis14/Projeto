@@ -63,7 +63,7 @@ addgroup $grupo --force-badname
 MENU
 }
 
-# Função responsável pela inserção de usuário em grupo.
+# Função responsável pela inserção de usuário existente em grupo.
 ADUG(){
 usuario=$( dialog --stdout --inputbox "Nome do usuário" 0 0 )
 grupo=$( dialog --stdout --inputbox "Nome do grupo" 0 0 )
@@ -71,6 +71,7 @@ gpasswd -a $usuario $grupo
 MENU
 }
 
+# Função responsável pela inserção de novo usuário em grupo.
 CNAG(){
 usuario=$( dialog --stdout --inputbox "Digite o nome do novo usuário" 0 0 )
 senha1=$( dialog --stdout --inputbox "Digite a senha do usuário" 0 0 )
@@ -87,22 +88,30 @@ mkdir /home/$usuario
 useradd $usuario -p $SENHA -d/home/$usuario -g $grupo
 MENU
 }
+
+# Função responsável pela remoção de usuário.
 RMUU(){
 usuario=$( dialog --stdout --inputbox "Digite nome do usuário" 0 0 )
 userdel $usuario
 rmdir /home/$usuario
 MENU
 }
+
+# Função responsável pela remoção de grupo.
 RMUG(){
 grupo=$( dialog --stdout --inputbox "Digite nome do grupo" 0 0 )
 groupdel $grupo
 MENU
 }
+
+# Função responsável pela listagem de usuário.
 LSUS(){
 grep /home /etc/passwd | cut -d: -f1 > passwd.txt
 dialog --stdout --title "Usuários" --textbox passwd.txt 50 60
 MENU
 }
+
+# Função responsável pela listagem de grupo.
 LSGS(){
 cat /etc/group > grupo.txt
 dialog --stdout --title "Grupos" --textbox grupo.txt 50 60
