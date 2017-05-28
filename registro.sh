@@ -1,5 +1,13 @@
 #!/bin/bash
 
+###########################################################
+# Projeto Anonymous
+# Módulo responsável pelo gerenciamento de Usuários
+# Criadores: Alana; Daniel; Fernando; Francisco; Luiz Henrique; Vanderlei.
+
+###########################################################
+
+#Janelas de Diálogo responsável pelo cadastro.
  dialog	--stdout --yesno "Você já tem cadastro ?" 0 0  
 
 if [ $? = 0 ]; then
