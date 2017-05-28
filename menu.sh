@@ -1,4 +1,13 @@
 #!/bin/bash
+
+###########################################################
+# Projeto Anonymous
+# Módulo responsável pelo gerenciamento de Arquivos
+# Criadores: Alana; Daniel; Fernando; Francisco; Luiz Henrique; Vanderlei.
+
+###########################################################
+
+# Função Menu responsável pelas rotinas principais deste Módulo.
 MENU(){
 MENU=$( dialog                 		\
 	--stdout               		\
@@ -25,6 +34,7 @@ case $MENU in
 esac
 }
 
+# Função responsável pela saída.
 SAIR(){
 dialog --stdout --msgbox "VOLTE SEMPRE" 0 0
 clear;exit 0
