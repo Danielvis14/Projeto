@@ -123,6 +123,7 @@ fi
 MENU
 }
 
+#Função responsável pela atualização de pacotes e remoção das dependências antigas"
 ATPD(){
 dialog --stdout --yesno "Quer atualizar os pacotes e remover dependências antigas ?" 0 0
 if [ $? = 0 ]; then
@@ -146,6 +147,8 @@ else
 fi
 MENU
 }
+
+#Função responsável pela atualização de repositórios e pacotes.
 ATRP(){
 dialog --stdout --yesno "Quer Atualizar Os Pacotes e Repositórios ? " 0 0
 if [ $? = 0 ]; then
@@ -170,6 +173,8 @@ else
 fi
 MENU
 }
+
+#Função responsável pela instalação de pacote.
 ISUP(){
 INSTALAR=$( dialog --stdout --inputbox 'Digite nome do pacote' 0 0 )
 dialog --yesno "Realmente deseja instalar o pacote ?" 0 0
@@ -196,6 +201,8 @@ else
 fi
 MENU
 }
+
+#Função responsável pela reinstalação de pacote.
 REUP(){
 REINSTALAR=$( dialog --stdout --inputbox 'Digite nome do pacote' 0 0 )
 dialog --yesno "Você quer reinstalar o pacote ? " 0 0
@@ -220,6 +227,8 @@ fi
 	rm REINSTALL
 MENU
 }
+
+#Função responsável pela procura de pacotes instalados.
 PUPI(){
 PESQUISA=$( dialog --stdout --inputbox "Digite o nome do pacote: " 0 0 )
 apt-cache search $PESQUISA >> PESQUISA.txt
@@ -228,6 +237,7 @@ rm PESQUISA.txt
 MENU
 }
 
+#Função responsável por remoção de pacote.
 RMUP(){
 REMOVER=$( dialog --stdout --inputbox "Digite o nome Do Pacote: " 0 0 )
 dialog --yesno "Você realmente Deseja remover o pacote ? " 0 0
@@ -253,6 +263,8 @@ fi
 	rm REMOVER
 MENU
 }
+
+#Função responsável pela remoção de pacote e suas configurações.
 RMPC(){
 PACOTE=$( dialog --stdout --inputbox "Digite o nome do pacote : " 0 0 )
 dialog --yesno "Você realmente deseja remover o pacote e suas configurações ? " 0 0
@@ -278,6 +290,8 @@ fi
 	rm PACOTAO
 MENU
 }
+
+#Função responsável pela listagem de pacotes instalados.
 LPIS(){
 dpkg --get-selections >> LISTA.txt
 dialog --textbox LISTA.txt 150 200
