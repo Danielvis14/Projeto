@@ -1,5 +1,13 @@
 #!/bin/bash
-#GERENCIADOR DE USUARIOS
+
+###########################################################
+# Projeto Anonymous
+# Módulo responsável pelo gerenciamento de Usuários
+# Criadores: Alana; Daniel; Fernando; Francisco; Luiz Henrique; Vanderlei.
+
+###########################################################
+
+#Menu geral 
 MENU(){
 SELECIONE=$(dialog \
 	--stdout \
@@ -32,6 +40,7 @@ PRESSIONE(){
 dialog --msgbox "Pressione [enter] para finalizar" 0 0
 }
 
+# Função responsável pela criação de usuário.
 CRUO(){
 usuario=$( dialog --stdout --inputbox "Digite o nome do usuário" 0 0 )
 senha1=$( dialog --stdout --passwordbox "Digite a senha do usuário" 0 0 )
@@ -47,12 +56,14 @@ useradd $usuario -p $SENHA -d/home/$usuario
 MENU
 }
 
+# Função responsável pela criação de grupo.
 CRUG(){
 grupo=$( dialog --stdout --inputbox "Nome do novo grupo" 0 0 )
 addgroup $grupo --force-badname
 MENU
 }
 
+# Função responsável pela inserção de usuário em grupo.
 ADUG(){
 usuario=$( dialog --stdout --inputbox "Nome do usuário" 0 0 )
 grupo=$( dialog --stdout --inputbox "Nome do grupo" 0 0 )
