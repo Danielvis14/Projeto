@@ -2,7 +2,7 @@
 
 ###########################################################
 # Projeto Anonymous
-# Módulo responsável pelo gerenciamento de Arquivos 
+# Módulo responsável pelo gerenciamento de Rede 
 # Criadores: Alana; Daniel; Fernando; Francisco; Luiz Henrique; Vanderlei.
 
 ###########################################################
