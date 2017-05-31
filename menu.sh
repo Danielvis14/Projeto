@@ -21,7 +21,9 @@ MENU=$( dialog                 		\
 	3 "Gerenciador de Pacotes"      \
 	4 "Gerenciador de Dispositivos" \
 	5 "Gerenciador de Rede"         \
-	6 "Sair"                        )
+	6 "Creditos"                    \
+	7 "Sair"                        )
+
 
 case $MENU in
 1) ./GerenciadorDeArquivos.sh    ;;
@@ -29,12 +31,17 @@ case $MENU in
 3) ./GerenciadorDePacotes.sh     ;;
 4) ./GerenciadorDeDispositivo.sh ;;
 5) ./GerenciadorDeRede.sh        ;;
-6) SAIR                          ;;
+6) CRE                           ;;
+7) SAIR                          ;;
 
 esac
 }
 
 # Função responsável pela saída.
+CRE(){
+dialog --textbox Creditos.txt 0 0
+MENU
+}
 SAIR(){
 dialog --stdout --msgbox "VOLTE SEMPRE" 0 0
 clear;exit 0
