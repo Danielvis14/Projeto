@@ -42,11 +42,15 @@ case $REDE in
 10) MTIP ;;
 11) CURD ;;
 12) PICO ;;
-13) ./menu.sh
-
+13) ./menu.sh ;;
+*) PRESSIONE;;
 esac
 }
-
+PRESSIONE(){
+dialog --msgbox "Pressione [enter] para finalizar" 0 0
+dialog --msgbox "Volte Sempre" 0 0
+clear
+}
 # Função responsável pela configuração de uma rede.
 CFUR(){
 IP=$( dialog --stdout --inputbox 'Digite o número IP do eth0: ' 0 0 )

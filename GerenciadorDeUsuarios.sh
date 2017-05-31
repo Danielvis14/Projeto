@@ -7,7 +7,7 @@
 
 ###########################################################
 
-#Menu geral 
+#Menu geral
 MENU(){
 SELECIONE=$(dialog \
 	--stdout \
@@ -32,12 +32,15 @@ case $SELECIONE in
 	6) RMUG ;;
 	7) LSUS ;;
 	8) LSGS ;;
-	9) ./menu.sh
+	9) ./menu.sh;;
+	*) PRESSIONE;;
 esac
 }
 
 PRESSIONE(){
 dialog --msgbox "Pressione [enter] para finalizar" 0 0
+dialog --msgbox "Volte Sempre" 0 0
+clear
 }
 
 # Função responsável pela criação de usuário.
@@ -46,6 +49,7 @@ usuario=$( dialog --stdout --inputbox "Digite o nome do usuário" 0 0 )
 senha1=$( dialog --stdout --passwordbox "Digite a senha do usuário" 0 0 )
 senha2=$( dialog --stdout --passwordbox "Por Favor,confirme a senha: " 0 0 )
 SENHA=$( $senha1 == $senha2 )
+
 if (( $senha1 != $senha2 )); then
 dialog --msgbox "As senhas não se conferem" 0 0
 else

@@ -33,7 +33,7 @@ case $MENU in
 5) ./GerenciadorDeRede.sh        ;;
 6) CRE                           ;;
 7) SAIR                          ;;
-
+*) MENU;;
 esac
 }
 
@@ -44,6 +44,6 @@ MENU
 }
 SAIR(){
 dialog --stdout --msgbox "VOLTE SEMPRE" 0 0
-clear;exit 0
+clear; exit 0
 }
 MENU

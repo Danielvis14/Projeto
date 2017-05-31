@@ -41,11 +41,16 @@ case $SELECIONE in
 	9) DDA ;;
 	10) RMA ;;
 	11) RMD ;;
-	12) ./menu.sh ;;
+	12)./menu.sh ;;
+	*) PRESSIONE ;;
 
 esac
 }
-
+PRESSIONE(){
+dialog --msgbox "Pressione [enter] para finalizar" 0 0
+dialog --msgbox "Volte Sempre" 0 0
+clear
+}
 #Função responsável pela criação de Arquivos
 CRA(){
 dialog --title "Aviso"  --yesno "Você Deseja Contunuar ?" 0 0
@@ -56,10 +61,10 @@ if [ $? = 0 ]; then
 	--inputbox "Digite um nome para o arquivo"	\
 	0 0						)
 	>$ARQ
+	MENU
 	else
 	MENU
 	fi
-MENU
 }
 
 #Função responsável pela criação de Diretórios
@@ -72,10 +77,10 @@ if [ $? = 0 ]; then
 	--inputbox "Digite um nome para o diretório"	\
 	0 0)
 	mkdir $DIR
-else
-MENU
-fi
-MENU
+	MENU
+	else
+	MENU
+	fi
 }
 
 #Função incumbida de mover os  Arquivos
@@ -97,12 +102,12 @@ dialog --title "Aviso" --yesno "Você Deseja Continuar ?" 0 0
 	0 0				            )
 
 	mv $MOVER $ONDE
+	MENU
 	else
 	MENU
 	fi
 
 
-MENU
 }
 
 #Função responsável pela cópia de Arquivos
@@ -123,12 +128,12 @@ COP(){
 	--fselect /			\
 	0 0				)
 
-cp $COPIAR $ONDE
+	cp $COPIAR $ONDE
+	MENU
 	else
 	MENU
 	fi
 
-MENU
 }
 
 #Função responsável por listar os Arquivos
@@ -149,11 +154,10 @@ LSA(){
 	--textbox .TEMP.txt			\
 	0 0
 	rm .TEMP.txt
+	MENU
 	else
 	MENU
 	fi
-
-MENU
 }
 
 #Função responsável pela compactação dos Arquivos
@@ -180,10 +184,10 @@ COM(){
 	0 0)
 
 	tar -cf $NAME.tar $ARQUIVOS
+	MENU
 	else
 	MENU
 	fi
-MENU
 }
 
 #Função responsável pela descompactação dos Arquivos
@@ -211,10 +215,10 @@ DES(){
 	0 0				    		)
 	chmod +x $NAME
 	tar -xf $NAME -C $DESCOMP
+	MENU
 	else
 	MENU
 	fi
-MENU
 
 }
 
@@ -241,12 +245,12 @@ PDA(){
 	--inputbox "Defina a permissão desejada"\
 	0 0					)
 	chmod $PER $ARQ
+	MENU
 	else
 	MENU
 	fi
 
 
-MENU
 }
 
 #Função responsável pela definição do dono do Arquivo
@@ -272,11 +276,11 @@ DDA(){
 	--inputbox "Informe o novo dono do arquivo"	\
 	0 0						)
 	chown $DONO $ARQN
+	MENU
 	else
 	MENU
 	fi
 
-MENU
 }
 
 #Função responsável pela remoção dos Arquivo
@@ -299,11 +303,11 @@ RMA(){
 	fi
 	if [ $? = 0 ]; then
 	rm $REMO
+	MENU
 	else
 		MENU
 	fi
 
-MENU
 }
 
 #Função responsável pela remoção do Diretório
@@ -322,11 +326,11 @@ RMD(){
 	fi
 	if [ $? = 0 ]; then
 	rmdir $REMO
+	MENU
 	else
 		MENU
 	fi
 
-MENU
 }
 
 MENU

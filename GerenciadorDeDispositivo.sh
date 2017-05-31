@@ -36,8 +36,14 @@ case $SELECIONE in
 7) IFDPM ;;
 8) IFEED ;;
 9) IFMR ;;
-10) ./menu.sh
+10) ./menu.sh ;;
+*) PRESSIONE ;;
 esac
+}
+PRESSIONE(){
+dialog --msgbox "Pressione [enter] para finalizar" 0 0
+dialog --msgbox "Volte Sempre" 0 0
+clear
 }
 
 # Função responsável pela listagem dos módulos carregados no sistema.  

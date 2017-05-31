@@ -40,12 +40,15 @@ case $Repositorio in
 9) RMUP  ;;
 10) RMPC ;;
 11) LPIS ;;
-12) ./menu.sh
+12) ./menu.sh;;
+*) PRESSIONE;;
 esac
 }
 
 PRESSIONE(){
- dialog --msgbox "Pressione [enter] para finalizar" 0 0
+dialog --msgbox "Pressione [enter] para finalizar" 0 0
+dialog --msgbox "Volte Sempre" 0 0
+clear
 }
 
 #Função responsável pela atualização dos repositórios.
