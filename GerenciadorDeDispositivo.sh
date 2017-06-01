@@ -11,6 +11,7 @@
 MENU(){
 	SELECIONE=$( dialog					\
 		--stdout					\
+		--nocancel					\
 		--backtitle "ANONYMOUS"                         \
 		--title "Gerenciador de Dispositivos"		\
 		--menu "Selecione uma opção"			\
@@ -24,7 +25,7 @@ MENU(){
 		7 "Informação da placa mãe"			\
 		8 "Informação de espaço em disco"		\
 		9 "Informações da Memória RAM"		        \
-		10 "Voltar"                                       )
+		10 "Voltar"                                     )
 
 case $SELECIONE in
 1) LSMC  			    ;;
