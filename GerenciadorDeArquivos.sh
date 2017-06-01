@@ -41,7 +41,7 @@ case $SELECIONE in
 	9) DDA ;;
 	10) RMA ;;
 	11) RMD ;;
-	12)./menu.sh ;;
+	12) /home/vagrant/Projeto/./menu.sh ;;
 	*) PRESSIONE ;;
 
 esac

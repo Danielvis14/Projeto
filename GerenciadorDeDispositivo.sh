@@ -2,12 +2,12 @@
 
 ###########################################################
 # Projeto Anonymous
-# Módulo responsável pelo gerenciamento de Dispositivos 
+# Módulo responsável pelo gerenciamento de Dispositivos
 # Criadores: Alana; Daniel; Fernando; Francisco; Luiz Henrique; Vanderlei.
 
 ###########################################################
 
-# Função Menu responsável pelas rotinas principais deste Módulo.  
+# Função Menu responsável pelas rotinas principais deste Módulo.
 MENU(){
 	SELECIONE=$( dialog					\
 		--stdout					\
@@ -27,17 +27,17 @@ MENU(){
 		10 "Voltar"                                       )
 
 case $SELECIONE in
-1) LSMC  ;;
-2) LSMPS ;;
-3) INMK  ;;
-4) RMMK  ;;
-5) MMDM  ;;
-6) MICPU ;;
-7) IFDPM ;;
-8) IFEED ;;
-9) IFMR ;;
-10) ./menu.sh ;;
-*) PRESSIONE ;;
+1) LSMC  			    ;;
+2) LSMPS 			    ;;
+3) INMK  			    ;;
+4) RMMK  			    ;;
+5) MMDM  			    ;;
+6) MICPU 			    ;;
+7) IFDPM 			    ;;
+8) IFEED 			    ;;
+9) IFMR 			    ;;
+10) /home/vagrant/Projeto/./menu.sh ;;
+*) PRESSIONE 			    ;;
 esac
 }
 PRESSIONE(){
@@ -46,7 +46,7 @@ dialog --msgbox "Volte Sempre" 0 0
 clear
 }
 
-# Função responsável pela listagem dos módulos carregados no sistema.  
+# Função responsável pela listagem dos módulos carregados no sistema.
 LSMC(){
 	lsmod > listagem.txt
 	echo "30" | dialog --gauge "Carregando Aguarde .." 0 0 0
@@ -62,7 +62,7 @@ LSMC(){
 MENU
 }
 
-# Função responsável por listar módulos psmouse.  
+# Função responsável por listar módulos psmouse.
 LSMPS(){
 	modinfo psmouse > lista.txt
 	echo "30" | dialog --gauge "Carregando Aguarde .." 0 0 0
@@ -78,7 +78,7 @@ LSMPS(){
 MENU
 }
 
-# Função responsável pela inserção de módulo no kernel.  
+# Função responsável pela inserção de módulo no kernel.
 INMK(){
 	INSER=$( dialog 					\
 		--stdout					\
@@ -111,7 +111,7 @@ MMDM(){
 	sleep 2
 	echo "100" | dialog --gauge "Carregando Aguarde..." 0 0 0
 	sleep 1
-	
+
 	dialog						\
 	--title "Mapa das dependências dos módulos"	\
 	--textbox lis.txt				\

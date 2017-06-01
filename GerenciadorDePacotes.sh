@@ -29,19 +29,19 @@ Repositorio=$(dialog                       	     	\
 	12 "Voltar")
 
 case $Repositorio in
-1) ATOR  ;;
-2) ATP   ;;
-3) RMDP  ;;
-4) ATPD  ;;
-5) ATRP  ;;
-6) ISUP  ;;
-7) REUP  ;;
-8) PUPI  ;;
-9) RMUP  ;;
-10) RMPC ;;
-11) LPIS ;;
-12) ./menu.sh;;
-*) PRESSIONE;;
+1) ATOR  			    ;;
+2) ATP   			    ;;
+3) RMDP  			    ;;
+4) ATPD  			    ;;
+5) ATRP  		            ;;
+6) ISUP  			    ;;
+7) REUP  			    ;;
+8) PUPI  			    ;;
+9) RMUP  			    ;;
+10) RMPC                            ;;
+11) LPIS 			    ;;
+12) /home/vagrant/Projeto/./menu.sh ;;
+*) PRESSIONE			    ;;
 esac
 }
 
@@ -297,7 +297,7 @@ MENU
 #Função responsável pela listagem de pacotes instalados.
 LPIS(){
 dpkg --get-selections >> LISTA.txt
-dialog --textbox LISTA.txt 150 200
+dialog --textbox LISTA.txt 200 200
 rm LISTA.txt
 MENU
 }
