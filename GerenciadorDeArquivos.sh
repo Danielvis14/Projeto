@@ -30,19 +30,19 @@ MENU(){
 		12 "Voltar")
 
 case $SELECIONE in
-	1) CRA ;;
-	2) CRD ;;
-	3) MVA ;;
-	4) COP ;;
-	5) LSA ;;
-	6) COM ;;
-	7) DES ;;
-	8) PDA ;;
-	9) DDA ;;
-	10) RMA ;;
-	11) RMD ;;
+	1) CRA 				    ;;
+	2) CRD 				    ;;
+	3) MVA 				    ;;
+	4) COP 				    ;;
+	5) LSA 				    ;;
+	6) COM 				    ;;
+	7) DES 			            ;;
+	8) PDA 			            ;;
+	9) DDA 				    ;;
+	10) RMA 			    ;;
+	11) RMD 			    ;;
 	12) /home/vagrant/Projeto/./menu.sh ;;
-	*) PRESSIONE ;;
+	*) PRESSIONE 			    ;;
 
 esac
 }
