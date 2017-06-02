@@ -140,6 +140,7 @@ fi
 LSUS(){
 grep /home /etc/passwd | cut -d: -f1 > passwd.txt
 dialog --stdout --title "Usuários" --textbox passwd.txt 50 60
+rm passwd.txt
 MENU
 }
 
@@ -147,6 +148,7 @@ MENU
 LSGS(){
 cat /etc/group > grupo.txt
 dialog --stdout --title "Grupos" --textbox grupo.txt 50 60
+rm grupo.txt
 MENU
 }
 MENU
