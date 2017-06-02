@@ -31,9 +31,9 @@ case $MENU in
 3) /home/vagrant/Projeto/./GerenciadorDePacotes.sh     ;;
 4) /home/vagrant/Projeto/./GerenciadorDeDispositivo.sh ;;
 5) /home/vagrant/Projeto/./GerenciadorDeRede.sh        ;;
-6) CRE                           ;;
-7) SAIR                          ;;
-255) PRESSIONE			 ;;
+6) CRE                           		       ;;
+7) SAIR                          		       ;;
+255) PRESSIONE			 		       ;;
 esac
 }
 
