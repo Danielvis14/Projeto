@@ -68,6 +68,7 @@ if [ $? = 0 ]; then
 	echo "100" | dialog --gauge " ATUALIZANDO AGUARDE..." 0 0 0
 	sleep 2
 	dialog --msgbox "Atualizado com sucesso! " 0 0
+	rm atualização
 else
 	dialog --msgbox "Operação cancelada" 0 0
 fi
@@ -199,10 +200,11 @@ apt-get install $INSTALAR > INSTALANDO &
 	sleep 1
 	rm INSTALANDO
 	--msgbox "Instalado com sucesso"
+	MENU
 else
 	dialog --msgbox "Operação cancelada" 0 0
+	MENU
 fi
-MENU
 }
 
 #Função responsável pela reinstalação de pacote.
@@ -224,11 +226,12 @@ if [ $? = 0 ]; then
 	echo "100" | dialog --gauge "REINSTALANDO PACOTE AGUARDE ..." 0 0 0
 	sleep 1
 	dialog --msgbox "Reinstalado com sucesso"
+	rm REINSTALL
+	MENU
 else
 	dialog --msgbox "Operação cancelada" 0 0
-fi
-	rm REINSTALL
-MENU
+	MENU
+fi	
 }
 
 #Função responsável pela procura de pacotes instalados.
@@ -257,14 +260,12 @@ if [ $? = 0 ]; then
 	echo "100" | dialog --gauge "REMOVENDO PACOTE AGUARDE ..." 0 0 0
 	sleep 1
 	dialog --msbox "Removido com sucesso" 0 0
-
-
+	MENU
+	rm REMOVER
 else
 	dialog --msgbox "Operação cancelada" 0 0
-
+	MENU
 fi
-	rm REMOVER
-MENU
 }
 
 #Função responsável pela remoção de pacote e suas configurações.
@@ -287,11 +288,12 @@ if [ $? = 0 ]; then
 	echo "100" | dialog --gauge "REMOVENDO PACOTE E SUAS CONFIGURAÇÕES AGUARDE ..." 0 0 0
 	sleep 1
 	dialog --msbox "Pacote removido com sucesso " 0 0
+	rm PACOTAO
+	MENU
 else
 	dialog --msgbox "Operação cancelada" 0 0
+	MENU
 fi
-	rm PACOTAO
-MENU
 }
 
 #Função responsável pela listagem de pacotes instalados.
