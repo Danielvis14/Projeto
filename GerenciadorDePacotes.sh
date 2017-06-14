@@ -183,7 +183,7 @@ ISUP(){
 INSTALAR=$( dialog --stdout --inputbox 'Digite nome do pacote' 0 0 )
 dialog --yesno "Realmente deseja instalar o pacote ?" 0 0
 if [ $? = 0 ]; then
-apt-get install $INSTALAR > INSTALANDO &
+apt-get install $INSTALAR --assume-yes > INSTALANDO &
 	echo "10" | dialog --gauge "INSTALANDO PACOTE AGUARDE ..." 0 0 0
 	sleep 3
 	echo "30" | dialog --gauge "INSTALANDO PACOTE AGUARDE ..." 0 0 0
@@ -231,13 +231,13 @@ if [ $? = 0 ]; then
 else
 	dialog --msgbox "Operação cancelada" 0 0
 	MENU
-fi	
+fi
 }
 
 #Função responsável pela procura de pacotes instalados.
 PUPI(){
 PESQUISA=$( dialog --stdout --inputbox "Digite o nome do pacote: " 0 0 )
-apt-cache search $PESQUISA >> PESQUISA.txt
+apt-cache search $PESQUISA >PESQUISA.txt
 dialog --textbox PESQUISA.txt 90 80
 rm PESQUISA.txt
 MENU
@@ -248,7 +248,7 @@ RMUP(){
 REMOVER=$( dialog --stdout --inputbox "Digite o nome Do Pacote: " 0 0 )
 dialog --yesno "Você realmente Deseja remover o pacote ? " 0 0
 if [ $? = 0 ]; then
-	apt-get remove $REMOVER > REMOVER &
+	apt-get remove $REMOVER --assume-yes > REMOVER &
 	echo "10" | dialog --gauge "REMOVENDO PACOTE AGUARDE ..." 0 0 0
 	sleep 3
 	echo "30" | dialog --gauge "REMOVENDO PACOTE AGUARDE ..." 0 0 0
@@ -274,7 +274,7 @@ PACOTE=$( dialog --stdout --inputbox "Digite o nome do pacote : " 0 0 )
 dialog --yesno "Você realmente deseja remover o pacote e suas configurações ? " 0 0
 
 if [ $? = 0 ]; then
-	apt-get autoremove $PACOTE > PACOTAO &
+	apt-get remove $PACOTE --purge --assume-yes > PACOTAO &
 	echo "10" | dialog --gauge "REMOVENDO PACOTE E SUAS CONFIGURAÇÕES AGUARDE ..." 0 0 0
 	sleep 3
 	echo "30" | dialog --gauge "REMOVENDO PACOTE E SUAS CONFIGURAÇÕES AGUARDE ..." 0 0 0

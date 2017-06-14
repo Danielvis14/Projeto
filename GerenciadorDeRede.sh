@@ -154,7 +154,7 @@ echo "   auto lo
    # Terceira Interface de Rede
    auto eth2
    allow-hotplug eth2
-   iface eth1 inet static
+   iface eth2 inet static
    address $IP3
    netmask $MASCARA3
    network $NETWORK3
@@ -208,15 +208,15 @@ echo "   auto lo
    # Terceira Interface de Rede
    auto eth2
    allow-hotplug eth2
-   iface eth1 inet static
+   iface eth2 inet static
    address $IP3
    netmask $MASCARA3
    network $NETWORK3
    broadcast $BROADCAST3
    # Quarta Interface de Rede
-   auto eth2
-   allow-hotplug eth2
-   iface eth1 inet static
+   auto eth3
+   allow-hotplug eth3
+   iface eth3 inet static
    address $IP4
    netmask $MASCARA4
    network $NETWORK4

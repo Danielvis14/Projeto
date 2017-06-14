@@ -17,27 +17,23 @@ MENU(){
 		--menu "Selecione uma opção"			\
 		0 0 0						\
 		1 "Listar módulos carregados"			\
-		2 "Listar módulos psmouse"			\
-		3 "Inserir um módulo no kernel"			\
-		4 "Remover módulo do kernel"			\
-		5 "Mostrar mapa das dependências dos módulos"	\
-		6 "Mostrar informações da cpu"			\
-		7 "Informação da placa mãe"			\
-		8 "Informação de espaço em disco"		\
-		9 "Informações da Memória RAM"		        \
-		10 "Voltar"                                     )
+		2 "Listar módulos do mouse"			\
+		3 "Mostrar mapa das dependências dos módulos"	\
+		4 "Mostrar informações da cpu"		        \
+		5 "Informação da placa mãe"			\
+		6 "Informação de espaço em disco"		\
+		7 "Informações da Memória RAM"		        \
+		8 "Voltar"                                     )
 
 case $SELECIONE in
 1) LSMC  			    ;;
 2) LSMPS 			    ;;
-3) INMK  			    ;;
-4) RMMK  			    ;;
-5) MMDM  			    ;;
-6) MICPU 			    ;;
-7) IFDPM 			    ;;
-8) IFEED 			    ;;
-9) IFMR 			    ;;
-10) /home/vagrant/Projeto/./menu.sh ;;
+3) MMDM  			    ;;
+4) MICPU 			    ;;
+5) IFDPM 			    ;;
+6) IFEED 			    ;;
+7) IFMR 			    ;;
+8) /home/vagrant/Projeto/./menu.sh  ;;
 *) PRESSIONE 			    ;;
 esac
 }

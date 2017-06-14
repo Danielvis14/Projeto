@@ -55,6 +55,11 @@ clear
 CRA(){
 dialog --title "Aviso"  --yesno "Você Deseja Contunuar ?" 0 0
 if [ $? = 0 ]; then
+	SELECIONE=$( dialog --stdout                 \
+		     --title "Selecione o Caminho: " \
+	             --fselect /                     \
+			0 0                          )
+	cd $SELECIONE
  	ARQ=$( dialog					\
 	--stdout					\
 	--nocancel                                      \
@@ -119,7 +124,7 @@ COP(){
 	--nocancel                              \
 	--title "O que você deseja copiar ? "	\
 	--fselect /			        \
-	0 0				       )
+	0 0				        )
 
 	ONDE=$( dialog			\
 	--stdout			\
@@ -286,28 +291,20 @@ DDA(){
 #Função responsável pela remoção dos Arquivo
 RMA(){
 	dialog --title "Aviso" --yesno "Você Deseja Continuar ?" 0 0
-	if [ $? = 0 ]; then
+if [ $? = 0 ]; then
 	REMO=$( dialog					\
 	--stdout					\
 	--nocancel                                      \
 	--title "Selecione o arquivo para removê-lo"	\
 	--fselect /					\
-	0 0						)
-	dialog					\
-	--stdout				\
-	--title "Confirme"			\
-	--yesno "Quer mesmo remover $REMO?"	\
-	0 0                                     \
-	else
+	0 0 )
+	cd $REMO
+	ARQ=$( dialog --stdout --inputbox "Informe nome do arquivo" 0 0 )
+	rm $ARQ
 	MENU
+else
+MENU
 	fi
-	if [ $? = 0 ]; then
-	rm $REMO
-	MENU
-	else
-		MENU
-	fi
-
 }
 
 #Função responsável pela remoção do Diretório
